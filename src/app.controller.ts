@@ -7,9 +7,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello() {
-    const text = 'Hello Nestjs';
-    const slugify = slug(text);
-    return slugify;
+  getHello(): string {
+    const test = 'Hello nestjs';
+    const slugify = slug(test);
+    console.log(slugify);
+    return this.appService.getHello();
   }
 }
