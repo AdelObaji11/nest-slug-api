@@ -1,6 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { slug } from 'slug-generator';
 
 @Controller()
 export class AppController {
@@ -8,9 +7,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    const test = 'Hello nestjs';
-    const slugify = slug(test);
-    console.log(slugify);
     return this.appService.getHello();
   }
 }
