@@ -22,7 +22,7 @@ export class SlugController {
     return this.slugService.getSlugById(Number(id));
   }
   @Delete(':id')
-  deleteSlugById(@Param('id') id: string): Slug {
+  deleteSlugById(@Param('id') id: string): string {
     return this.slugService.deleteSlugById(Number(id));
   }
 }

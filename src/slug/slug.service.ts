@@ -23,10 +23,10 @@ export class SlugService {
     if (!foundSlug) throw new NotFoundException('slug is not found');
     return foundSlug;
   }
-  deleteSlugById(del: number): Slug {
+  deleteSlugById(del: number): string {
     const deleteSlug = this.slugs.find((p) => p.id === del);
     if (!deleteSlug) throw new NotFoundException('slug is not found');
     this.slugs = this.slugs.filter((item) => item.id !== del);
-    return deleteSlug;
+    return `Deleted The Slug id ${deleteSlug.id} successfully`;
   }
 }
