@@ -6,23 +6,20 @@ import type { Slug } from './slug.model';
 export class SlugController {
   constructor(private readonly slugService: SlugService) {}
 
-  // create slug
   @Post()
-  createSlug(@Body('original') newSlug: string): Slug {
-    return this.slugService.createSlug(newSlug);
+  createSlug(@Body('original') original: string): Slug {
+    return this.slugService.createSlug(original);
   }
-  // get all slug
   @Get()
   getAllSlug(): Slug[] {
     return this.slugService.getAllSlug();
   }
-  // get slug by id
   @Get(':id')
-  getSlugById(@Param('id') id: string): Slug {
-    return this.slugService.getSlugById(Number(id));
+  getSlugById(@Param('id') id: number): Slug {
+    return this.slugService.getSlugById(id);
   }
   @Delete(':id')
-  deleteSlugById(@Param('id') id: string): string {
-    return this.slugService.deleteSlugById(Number(id));
+  deleteSlugById(@Param('id') id: number): Slug {
+    return this.slugService.deleteSlugById(id);
   }
 }

@@ -5,28 +5,28 @@ import { slug } from 'slug-generator';
 @Injectable()
 export class SlugService {
   private slugs: Slug[] = [];
-  public counterId = this.slugs.length;
+  public counterId = 0;
   getAllSlug(): Slug[] {
     return this.slugs;
   }
   createSlug(newslug: string): Slug {
-    const createdSlug: Slug = {
+    const newSlug: Slug = {
       id: this.counterId + 1,
       original: newslug,
       slug: slug(newslug),
     };
-    this.slugs.push(createdSlug);
-    return createdSlug;
+    this.slugs.push(newSlug);
+    return newSlug;
   }
-  getSlugById(found: number): Slug {
-    const foundSlug = this.slugs.find((p) => p.id === found);
-    if (!foundSlug) throw new NotFoundException('slug is not found');
-    return foundSlug;
+  getSlugById(id: number): Slug {
+    const slugEntity = this.slugs.find((slugData) => slugData.id === id);
+    if (!slugEntity) throw new NotFoundException('slug is not found');
+    return slugEntity;
   }
-  deleteSlugById(del: number): string {
-    const deleteSlug = this.slugs.find((p) => p.id === del);
+  deleteSlugById(id: number): Slug {
+    const deleteSlug = this.slugs.find((slug) => slug.id === id);
     if (!deleteSlug) throw new NotFoundException('slug is not found');
-    this.slugs = this.slugs.filter((item) => item.id !== del);
-    return `Deleted The Slug id ${deleteSlug.id} successfully`;
+    this.slugs = this.slugs.filter((slug) => slug.id !== id);
+    return deleteSlug;
   }
 }
