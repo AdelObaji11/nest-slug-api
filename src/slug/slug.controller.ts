@@ -6,10 +6,6 @@ import type { Slug } from './slug.model';
 export class SlugController {
   constructor(private readonly slugService: SlugService) {}
 
-  @Post()
-  createSlug(@Body('original') original: string): Slug {
-    return this.slugService.createSlug(original);
-  }
   @Get()
   getAllSlug(): Slug[] {
     return this.slugService.getAllSlug();
@@ -17,6 +13,10 @@ export class SlugController {
   @Get(':id')
   getSlugById(@Param('id') id: number): Slug {
     return this.slugService.getSlugById(id);
+  }
+  @Post()
+  createSlug(@Body('original') original: string): Slug {
+    return this.slugService.createSlug(original);
   }
   @Delete(':id')
   deleteSlugById(@Param('id') id: number): Slug {

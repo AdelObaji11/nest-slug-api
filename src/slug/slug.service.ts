@@ -5,10 +5,12 @@ import { slug } from 'slug-generator';
 @Injectable()
 export class SlugService {
   private slugs: Slug[] = [];
-  public counterId = 0;
+  private counterId = 0;
+
   getAllSlug(): Slug[] {
     return this.slugs;
   }
+
   createSlug(newslug: string): Slug {
     const newSlug: Slug = {
       id: this.counterId + 1,
@@ -18,11 +20,13 @@ export class SlugService {
     this.slugs.push(newSlug);
     return newSlug;
   }
+
   getSlugById(id: number): Slug {
     const slugEntity = this.slugs.find((slugData) => slugData.id === id);
     if (!slugEntity) throw new NotFoundException('slug is not found');
     return slugEntity;
   }
+
   deleteSlugById(id: number): Slug {
     const deleteSlug = this.slugs.find((slug) => slug.id === id);
     if (!deleteSlug) throw new NotFoundException('slug is not found');
