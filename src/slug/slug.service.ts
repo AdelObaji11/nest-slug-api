@@ -12,6 +12,8 @@ export class SlugService {
   }
 
   createSlug(newslug: string): Slug {
+    this.counterId++;
+
     const newSlug: Slug = {
       id: this.counterId + 1,
       original: newslug,
