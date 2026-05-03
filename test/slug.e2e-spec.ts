@@ -26,7 +26,7 @@ describe('SlugController (e2e)', () => {
       });
   });
 
-  it('/GET /slug - should return all slug', () => {
+  it('GET /slug - should return all slug', () => {
     return request(app.getHttpServer())
       .get('/slug')
       .expect(200)
@@ -37,11 +37,11 @@ describe('SlugController (e2e)', () => {
 
   type SlugResponse = {
     id: string;
-    originsl: string;
+    original: string;
     slug: string;
   };
 
-  it('/GET /slug/:id - should return one slug', async () => {
+  it('GET /slug/:id - should return one slug', async () => {
     const createRes = await request(app.getHttpServer())
       .post('/slug')
       .send({ original: 'Test Slug' });
